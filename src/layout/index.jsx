@@ -15,7 +15,7 @@ export default function Layout({ children }) {
             <Header toggleSidebar={toggleSidebar} />
             <div className="flex flex-1">
                 <Sidebar isOpen={isSidebarOpen} />
-                <main className="flex-1 px-2 bg-white  min-h-screen">
+                <main className="flex-1 px-2 bg-white overflow-y-auto min-h-screen">
                     {children}
                 </main>
             </div>

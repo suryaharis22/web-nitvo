@@ -60,56 +60,58 @@ const ProductDetail = () => {
 
     return (
         <motion.div
-            className="relative flex flex-col items-center justify-start px-4 py-8 space-y-8"
+            className="relative flex flex-col items-center justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
         >
             {/* Banner Section */}
-            <div className="absolute top-1 w-full h-[250px] md:h-[300px] rounded-xl overflow-hidden z-10">
-                <div className="absolute inset-0 bg-black/40 z-10 backdrop-blur-sm" />
+            <div className="w-full h-[300px] z-10 bg-cardimg bg-no-repeat bg-center bg-cover mt-2 rounded-xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gray-500/30 backdrop-blur-sm z-10" />
                 <img
                     src={`${process.env.NEXT_PUBLIC_URL_STORAGE}/${dataSection?.banner}`}
-                    alt="Banner"
-                    className="w-full h-full object-cover z-0"
+                    alt=""
+                    className="w-full h-full object-cover"
                 />
             </div>
 
-            {/* Grid Section */}
-            <div className=" w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-6 z-20">
+            {/* Form Section */}
+            <motion.div
+                className="absolute top-1/2 z-20 grid lg:grid-cols-3 gap-6 rounded-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+            >
                 {/* Product Info */}
-                <motion.div
-                    className="bg-primary-dark p-6 rounded-xl text-white space-y-4"
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                    <div className="w-full h-48 md:h-64 bg-gray-200 rounded-lg overflow-hidden flex items-center justify-center">
+                <div className="space-y-4 bg-primary-dark p-4 rounded-xl">
+                    <div className="w-full h-64 bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
                         <img
                             src={`${process.env.NEXT_PUBLIC_URL_STORAGE}${dataSection?.banner}`}
                             alt={dataSection?.name || 'Product Image'}
                             className="object-cover w-full h-full"
                         />
                     </div>
-                    <div>
-                        <h1 className="text-2xl md:text-3xl font-bold">{dataSection?.name || selectedProduct?.name}</h1>
-                        <p className={`mt-2 text-sm ${showFullDescription ? '' : 'line-clamp-5'}`}>
+                    <div className="text-sm text-gray-200">
+                        <h1 className="text-3xl font-bold text-white">
+                            {dataSection?.name || selectedProduct?.name}
+                        </h1>
+                        <p className={showFullDescription ? '' : 'line-clamp-5'}>
                             {selectedProduct?.description || dataSection?.description || 'Tidak ada deskripsi produk.'}
                         </p>
                         {(selectedProduct?.description || dataSection?.description) && (
                             <button
                                 onClick={() => setShowFullDescription(!showFullDescription)}
-                                className="mt-2 text-primary hover:underline text-sm"
+                                className="mt-2 text-primary-dark hover:underline text-sm"
                             >
                                 {showFullDescription ? 'Tampilkan lebih sedikit' : 'Lihat selengkapnya'}
                             </button>
                         )}
                     </div>
-                </motion.div>
+                </div>
 
-                {/* Form Section */}
+                {/* Dynamic Form (Prepaid/Postpaid) */}
                 <motion.div
-                    className="lg:col-span-2 bg-primary-dark rounded-xl p-6  space-y-6"
+                    className="space-y-6 col-span-2 bg-primary-dark p-4 rounded-xl"
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
@@ -138,9 +140,8 @@ const ProductDetail = () => {
                         />
                     )}
                 </motion.div>
-            </div>
+            </motion.div>
         </motion.div>
-
     );
 };
 

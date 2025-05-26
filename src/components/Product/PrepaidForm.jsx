@@ -80,7 +80,7 @@ const PrepaidForm = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="space-y-6 p-4 bg-white rounded-xl "
+            className="space-y-6 p-4 bg-white rounded-xl shadow-md"
         >
             {/* Input Nomor */}
             <div>
@@ -117,8 +117,8 @@ const PrepaidForm = ({
                                     key={product.id}
                                     whileHover={{ scale: 1.02 }}
                                     className={`flex items-center gap-3 cursor-pointer rounded-xl border p-4 transition-all duration-200 ${selectedProductId === product.id
-                                        ? 'border-primary bg-primary/10'
-                                        : 'border-gray-200 hover:border-primary'
+                                            ? 'border-primary bg-primary/10'
+                                            : 'border-gray-200 hover:border-primary'
                                         }`}
                                 >
                                     <input

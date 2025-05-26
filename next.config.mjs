@@ -4,9 +4,9 @@ const nextConfig = {
   devIndicators: {
     buildActivity: false,
   },
-  images: {
-    domains: ['dash.grabpay.id'],
-  },
+  // images: {
+  //   domains: ['dash.grabpay.id'],
+  // },
   eslint: {
     ignoreDuringBuilds: true, // 🔧 Mematikan ESLint saat build
   },
